@@ -1,5 +1,5 @@
 function getComputerPlay() {
-  let menu = Math.floor(Math.random * 3) + 1;
+  let menu = Math.floor(Math.random() * 3) + 1;
   switch (menu) {
     case 1:
       return "rock";
@@ -10,7 +10,7 @@ function getComputerPlay() {
   }
 }
 
-function playGame(playerChoice, computerChoice) {
+function playGame(playerChoice, computerChoice = getComputerPlay()) {
 
   playerChoice = playerChoice.toLowerCase();
   computerChoice = computerChoice.toLowerCase();
@@ -24,10 +24,15 @@ function playGame(playerChoice, computerChoice) {
   }
 
   if ((playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "scissors" && computerChoice == "paper")) {
-    return "Player wins! " + playerChoice.toUpperCase + " beats " + computerChoice.toUpperCase();
+    return "Player wins! " + playerChoice.toUpperCase() + " beats " + computerChoice.toUpperCase();
   }
 
   return -1;
-
 }
 
+function runTest() {
+  for (let i = 0; i < 10; i += 1) {
+    let game = playGame(getComputerPlay())
+    console.log(game)
+  }
+}
