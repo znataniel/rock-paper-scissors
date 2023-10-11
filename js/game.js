@@ -30,6 +30,35 @@ function playGame(playerChoice, computerChoice = getComputerPlay()) {
   return -1;
 }
 
+function game() {
+  const NUMBER_O_GAMES = 5;
+  let p1Points = 0;
+  let p2Points = 0;
+  let play;
+  let whoWon;
+  for (let i = 0; i < NUMBER_O_GAMES; i += 1) {
+    let playerPlay = prompt("What do you play?")
+    play = playGame(playerPlay);
+    whoWon = play.split("!");
+
+    console.log(play);
+
+    switch (whoWon[0]) {
+      case "Player wins":
+        p1Points += 1;
+        break;
+      case "Computer wins":
+        p2Points += 1;
+        break;
+      default:
+        break;
+    }
+  }
+
+  let msg = "FINAL SCORE:\nPLAYER: " + p1Points + " - COMPUTER: " + p2Points;
+  console.log(msg);
+}
+
 function runTest() {
   for (let i = 0; i < 10; i += 1) {
     let game = playGame(getComputerPlay())
