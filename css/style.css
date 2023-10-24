@@ -1,0 +1,28 @@
+.bruvTitle {
+  text-align: center;
+}
+
+.playBtns {
+  margin: auto 40%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+}
+
+.playBtns > button {
+  padding: 8px 24px;
+}
+
+.btnRock {
+  background-color: lightblue;
+}
+
+.btnPaper {
+  background-color: lightyellow;
+}
+
+.btnScissors {
+  background-color: pink;
+}

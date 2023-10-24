@@ -11,7 +11,6 @@ function getComputerPlay() {
 }
 
 function playGame(playerChoice, computerChoice = getComputerPlay()) {
-
   playerChoice = playerChoice.toLowerCase();
   computerChoice = computerChoice.toLowerCase();
 
@@ -19,12 +18,30 @@ function playGame(playerChoice, computerChoice = getComputerPlay()) {
     return "Tie! Both players picked " + playerChoice.toUpperCase();
   }
 
-  if ((playerChoice == "rock" && computerChoice == "paper") || (playerChoice == "paper" && computerChoice == "scissors") || (playerChoice == "scissors" && computerChoice == "rock")) {
-    return "Computer wins! " + computerChoice.toUpperCase() + " beats " + playerChoice.toUpperCase();
+  if (
+    (playerChoice == "rock" && computerChoice == "paper") ||
+    (playerChoice == "paper" && computerChoice == "scissors") ||
+    (playerChoice == "scissors" && computerChoice == "rock")
+  ) {
+    return (
+      "Computer wins! " +
+      computerChoice.toUpperCase() +
+      " beats " +
+      playerChoice.toUpperCase()
+    );
   }
 
-  if ((playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "scissors" && computerChoice == "paper")) {
-    return "Player wins! " + playerChoice.toUpperCase() + " beats " + computerChoice.toUpperCase();
+  if (
+    (playerChoice == "paper" && computerChoice == "rock") ||
+    (playerChoice == "rock" && computerChoice == "scissors") ||
+    (playerChoice == "scissors" && computerChoice == "paper")
+  ) {
+    return (
+      "Player wins! " +
+      playerChoice.toUpperCase() +
+      " beats " +
+      computerChoice.toUpperCase()
+    );
   }
 
   return -1;
@@ -37,7 +54,7 @@ function game() {
   let play;
   let whoWon;
   for (let i = 0; i < NUMBER_O_GAMES; i += 1) {
-    let playerPlay = prompt("What do you play?")
+    let playerPlay = prompt("What do you play?");
     play = playGame(playerPlay);
     whoWon = play.split("!");
 
@@ -61,7 +78,7 @@ function game() {
 
 function runTest() {
   for (let i = 0; i < 10; i += 1) {
-    let game = playGame(getComputerPlay())
-    console.log(game)
+    let game = playGame(getComputerPlay());
+    console.log(game);
   }
 }
