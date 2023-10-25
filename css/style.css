@@ -11,6 +11,11 @@
   gap: 36px;
 }
 
+.newGame {
+  margin: auto 40%;
+  height: 96px;
+}
+
 .playBtns > button {
   padding: 8px 24px;
 }
