@@ -47,16 +47,22 @@ function playGame(playerChoice, computerChoice = getComputerPlay()) {
   return -1;
 }
 
-function game(playerPlay) {
-  const POINTS_TO_WIN = 5;
-  let p1Points = 0;
-  let p2Points = 0;
-  let play;
-  let winner;
-  while (p1Points < POINTS_TO_WIN && p2Points < POINTS_TO_WIN) {
-    play = playGame(playerPlay);
-    winner = play.split("!");
+function updatePoints() {
+  pointsPlaceholder.textContent =
+    "Player " + p1Points + " -- " + p2Points + " Computer";
+}
 
+const playBtns = document.querySelectorAll(".playBtns > button");
+const msgPlaceholder = document.querySelector(".gameMsg");
+const pointsPlaceholder = document.querySelector("div.points");
+const POINTS_TO_WIN = 5;
+let p1Points = 0;
+let p2Points = 0;
+
+playBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    let play = playGame(btn.textContent);
+    let winner = play.split("!");
     switch (winner[0]) {
       case "Player wins":
         p1Points += 1;
@@ -67,13 +73,8 @@ function game(playerPlay) {
       default:
         break;
     }
-  }
 
-  let msg = "FINAL SCORE:\nPLAYER: " + p1Points + " - COMPUTER: " + p2Points;
-  if (p1Points > p2Points) {
-    msg += "\nYOU'RE WINNER.";
-  } else {
-    msg += "\nYOU'RE LOSER, Computer wins.";
-  }
-  return msg;
-}
+    msgPlaceholder.textContent = play;
+    updatePoints();
+  });
+});
