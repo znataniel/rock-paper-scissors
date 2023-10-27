@@ -15,7 +15,7 @@ function playGame(playerChoice, computerChoice = getComputerPlay()) {
   computerChoice = computerChoice.toLowerCase();
 
   if (playerChoice == computerChoice) {
-    return "Tie! Both players picked " + playerChoice.toUpperCase();
+    return "Tie! Both players picked " + playerChoice.toUpperCase() + ".";
   }
 
   if (
@@ -27,7 +27,8 @@ function playGame(playerChoice, computerChoice = getComputerPlay()) {
       "Computer wins! " +
       computerChoice.toUpperCase() +
       " beats " +
-      playerChoice.toUpperCase()
+      playerChoice.toUpperCase() +
+      "."
     );
   }
 
@@ -40,7 +41,8 @@ function playGame(playerChoice, computerChoice = getComputerPlay()) {
       "Player wins! " +
       playerChoice.toUpperCase() +
       " beats " +
-      computerChoice.toUpperCase()
+      computerChoice.toUpperCase() +
+      "."
     );
   }
 
