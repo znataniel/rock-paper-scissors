@@ -52,16 +52,20 @@ function updatePoints() {
     "Player " + p1Points + " -- " + p2Points + " Computer";
 }
 
+const POINTS_TO_WIN = 5;
+const WIN_MSG = "You win fucker, congratulations.";
+const LOSE_MSG = "Lol a computer beat you, git gud pussy.";
+
 const playBtns = document.querySelectorAll(".playBtns > button");
 const msgPlaceholder = document.querySelector(".gameMsg");
 const pointsPlaceholder = document.querySelector("div.points");
-const POINTS_TO_WIN = 5;
+
 let p1Points = 0;
 let p2Points = 0;
 
 playBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    let play = playGame(btn.textContent);
+    let play = playGame(btn.value);
     let winner = play.split("!");
     switch (winner[0]) {
       case "Player wins":
@@ -74,7 +78,13 @@ playBtns.forEach((btn) => {
         break;
     }
 
-    msgPlaceholder.textContent = play;
+    if (p1Points < POINTS_TO_WIN && p2Points < POINTS_TO_WIN)
+      msgPlaceholder.textContent = play;
+    else {
+      if (p1Points > p2Points) {
+        msgPlaceholder.textContent = WIN_MSG;
+      } else msgPlaceholder.textContent = LOSE_MSG;
+    }
     updatePoints();
   });
 });
