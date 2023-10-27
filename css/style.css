@@ -10,13 +10,6 @@ body {
   font-family: monospace;
 }
 
-button {
-  font-family: monospace;
-  border: 0;
-  background-color: #eceff4;
-  border-radius: 12px;
-}
-
 .mainContent {
   margin: 0 30%;
   padding-top: 24px;
@@ -34,22 +27,23 @@ button {
 }
 
 .playBtns {
-  height: 64px;
+  height: 180px;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: stretch;
   gap: 24px;
 }
 
-.newGame {
-  /* align-self: centwer; */
-  height: 48px;
-  margin: auto 20%;
-}
-
 .playBtns > button {
-  flex: 1;
+  flex: 0 0 140px;
   padding: 8px 24px;
+  border: 0;
+  font-family: monospace;
+  font-size: 64px;
+  color: #4c566a;
+  background-color: #eceff4;
+  border-radius: 12px;
+  box-shadow: 3px 9px #2e3440;
 }
 
 .gameMsg,
@@ -58,10 +52,6 @@ button {
   font-size: 20px;
   font-weight: 500;
   color: #eceff4;
-}
-
-.italian {
-  font-style: italic;
 }
 
 .footer {
