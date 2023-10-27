@@ -59,32 +59,49 @@ const LOSE_MSG = "Lol a computer beat you, git gud pussy.";
 const playBtns = document.querySelectorAll(".playBtns > button");
 const msgPlaceholder = document.querySelector(".gameMsg");
 const pointsPlaceholder = document.querySelector("div.points");
+const nuGame = document.querySelector("button.nuGame");
 
 let p1Points = 0;
 let p2Points = 0;
+let newGameFlag = true;
 
 playBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
-    let play = playGame(btn.value);
-    let winner = play.split("!");
-    switch (winner[0]) {
-      case "Player wins":
-        p1Points += 1;
-        break;
-      case "Computer wins":
-        p2Points += 1;
-        break;
-      default:
-        break;
-    }
+    if (!newGame) {
+      pointsPlaceholder.style.display = "block";
 
-    if (p1Points < POINTS_TO_WIN && p2Points < POINTS_TO_WIN)
-      msgPlaceholder.textContent = play;
-    else {
-      if (p1Points > p2Points) {
-        msgPlaceholder.textContent = WIN_MSG;
-      } else msgPlaceholder.textContent = LOSE_MSG;
+      let play = playGame(btn.value);
+      let winner = play.split("!");
+      switch (winner[0]) {
+        case "Player wins":
+          p1Points += 1;
+          break;
+        case "Computer wins":
+          p2Points += 1;
+          break;
+        default:
+          break;
+      }
+
+      if (p1Points < POINTS_TO_WIN && p2Points < POINTS_TO_WIN)
+        msgPlaceholder.textContent = play;
+      else {
+        p1Points > p2Points
+          ? (msgPlaceholder.textContent = WIN_MSG)
+          : (msgPlaceholder.textContent = LOSE_MSG);
+        newGame = true;
+        nuGame.textContent = "NEW GAME";
+      }
+      updatePoints();
     }
-    updatePoints();
   });
+});
+
+nuGame.addEventListener("click", () => {
+  newGame = false;
+  p1Points = 0;
+  p2Points = 0;
+  updatePoints();
+  nuGame.textContent = "RESTART";
+  pointsPlaceholder.style.display = "none";
 });
