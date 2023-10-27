@@ -29,12 +29,13 @@ body {
 .playBtns {
   height: 180px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: stretch;
   gap: 24px;
 }
 
-.playBtns > button {
+.playBtns > button,
+.nuGame {
   flex: 0 0 140px;
   padding: 8px 24px;
   border: 0;
@@ -54,10 +55,28 @@ body {
   color: #eceff4;
 }
 
+.nuGame {
+  flex: 1;
+  font-size: 48px;
+}
+
+.playBtns > button:hover,
+.nuGame:hover {
+  background-color: #9dacc8;
+}
+
+.playBtns > button:active,
+.nuGame:active {
+  background-color: #9dacc8;
+  translate: 2px 4px;
+  box-shadow: 1px 5px #2e3440;
+}
+
 .footer {
   color: #4c566a;
   background-color: #eceff4;
   text-align: center;
   font-weight: 1000;
+  font-size: 18px;
   padding: 16px;
 }
