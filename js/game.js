@@ -63,7 +63,7 @@ const nuGame = document.querySelector("button.nuGame");
 
 let p1Points = 0;
 let p2Points = 0;
-let newGameFlag = true;
+let newGame = true;
 
 playBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -103,5 +103,6 @@ nuGame.addEventListener("click", () => {
   p2Points = 0;
   updatePoints();
   nuGame.textContent = "RESTART";
+  msgPlaceholder.textContent = "";
   pointsPlaceholder.style.display = "none";
 });
